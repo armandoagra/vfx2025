@@ -3,16 +3,13 @@ using UnityEngine;
 public class PlayerSpells : MonoBehaviour
 {
     [SerializeField] private KeyCode projectileKey, buffKey, aoeKey, ultimateKey;
-    [SerializeField] private GameObject projectilePrefab, buffPrefab, aoePrefab, ultimatePrefab;
+    [SerializeField] private Projectile projectilePrefab;
+    [SerializeField] private float projectileLifetime = 1f;
+    
+    [SerializeField] private GameObject buffPrefab, aoePrefab, ultimatePrefab;
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private bool ultimateIsProjectile, ultimateIsBuff, ultimateIsAOE, ultimateIsTargeted;
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(projectileKey))
@@ -35,7 +32,16 @@ public class PlayerSpells : MonoBehaviour
 
     public void CastProjectile()
     {
-        Instantiate(projectilePrefab, transform.position + transform.forward, transform.rotation);
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo))
+        {
+            Vector3 direction = (hitInfo.point - transform.position).normalized;
+            direction.y = 0;
+            transform.forward = direction;
+        }
+
+        var projectile = Instantiate(projectilePrefab, transform.position + transform.forward, transform.rotation);
+        projectile.Initialize(transform.forward, projectileSpeed);
+        Destroy(projectile.gameObject, projectileLifetime);
     }
 
     public void CastBuff()
