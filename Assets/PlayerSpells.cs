@@ -18,15 +18,15 @@ public class PlayerSpells : MonoBehaviour
         }
         if (Input.GetKeyDown(buffKey))
         {
-            Instantiate(buffPrefab, transform.position, transform.rotation);
+            CastBuff();
         }
         if (Input.GetKeyDown(aoeKey))
         {
-            Instantiate(aoePrefab, transform.position, transform.rotation);
+            CastAOE();
         }
         if (Input.GetKeyDown(ultimateKey))
         {
-            Instantiate(ultimatePrefab, transform.position + transform.forward, transform.rotation);
+            CastUltimate();
         }
     }
 
@@ -46,7 +46,7 @@ public class PlayerSpells : MonoBehaviour
 
     public void CastBuff()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, 5f))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo))
         {
             if (hitInfo.collider.TryGetComponent<Ally>(out var ally))
             {

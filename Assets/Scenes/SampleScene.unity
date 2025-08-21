@@ -664,7 +664,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 45e1f679ba44639429195fe2154e74a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2205,12 +2205,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileKey: 113
-  buffKey: 0
+  buffKey: 119
   aoeKey: 0
   ultimateKey: 0
   projectilePrefab: {fileID: 3570209819009006478, guid: 647c032e8d97a7b4b993c820fdfbb97f, type: 3}
   projectileLifetime: 1
-  buffPrefab: {fileID: 0}
+  buffPrefab: {fileID: 751882697325462884, guid: 16f130fad8b932643a8afe5e9c270ac2, type: 3}
   aoePrefab: {fileID: 0}
   ultimatePrefab: {fileID: 0}
   projectileSpeed: 18
