@@ -1995,17 +1995,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileKey: 113
   buffKey: 119
-  aoeKey: 0
-  ultimateKey: 0
+  aoeKey: 101
+  ultimateKey: 114
   projectilePrefab: {fileID: 3570209819009006478, guid: 647c032e8d97a7b4b993c820fdfbb97f, type: 3}
   projectileLifetime: 1
   buffPrefab: {fileID: 751882697325462884, guid: 16f130fad8b932643a8afe5e9c270ac2, type: 3}
-  aoePrefab: {fileID: 0}
-  ultimatePrefab: {fileID: 0}
+  aoePrefab: {fileID: 2467344293638845242, guid: e84d4318d4623904198c39ab4bbeafa8, type: 3}
+  ultimatePrefab: {fileID: 2467344293638845242, guid: 92869f9145ecf5047bddbb78dd229e05, type: 3}
   projectileSpeed: 18
   ultimateIsProjectile: 0
   ultimateIsBuff: 0
-  ultimateIsAOE: 0
+  ultimateIsAOE: 1
   ultimateIsTargeted: 0
 --- !u!1 &1667422935
 GameObject:

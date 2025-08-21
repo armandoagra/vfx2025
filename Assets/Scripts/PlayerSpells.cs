@@ -5,7 +5,7 @@ public class PlayerSpells : MonoBehaviour
     [SerializeField] private KeyCode projectileKey, buffKey, aoeKey, ultimateKey;
     [SerializeField] private Projectile projectilePrefab;
     [SerializeField] private float projectileLifetime = 1f;
-    
+
     [SerializeField] private GameObject buffPrefab, aoePrefab, ultimatePrefab;
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private bool ultimateIsProjectile, ultimateIsBuff, ultimateIsAOE, ultimateIsTargeted;
@@ -57,12 +57,11 @@ public class PlayerSpells : MonoBehaviour
 
     public void CastAOE()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, 10f))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo))
         {
-            if (hitInfo.collider.CompareTag("Ground"))
-            {
-                Instantiate(aoePrefab, hitInfo.point, Quaternion.identity);
-            }
+            Vector3 hitPoint = hitInfo.point;
+            hitPoint.y = 0;
+            Instantiate(aoePrefab, hitPoint, Quaternion.identity);
         }
     }
 
@@ -89,12 +88,11 @@ public class PlayerSpells : MonoBehaviour
         }
         else if (ultimateIsAOE)
         {
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, 10f))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo))
             {
-                if (hitInfo.collider.CompareTag("Ground"))
-                {
-                    Instantiate(ultimatePrefab, hitInfo.point, Quaternion.identity);
-                }
+                Vector3 hitPoint = hitInfo.point;
+                hitPoint.y = 0;
+                Instantiate(ultimatePrefab, hitPoint, Quaternion.identity);
             }
         }
         else if (ultimateIsTargeted)
